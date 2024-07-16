@@ -24,9 +24,35 @@ def test_ConvNeXtEncoder_CASE_creation(name):
 
     encoder.eval()
 
-    x = torch.randn(1, IN_CHANNELS, 64)
-    y = encoder(x)
+    x = torch.randn(1, IN_CHANNELS, 32)
+
+    with torch.no_grad():
+        y = encoder(x)
 
     for nchannels, yi in zip(encoder.out_channels, y):
         assert yi.shape[0] == x.shape[0]
         assert yi.shape[1] == nchannels
+
+@pytest.mark.convnext
+@pytest.mark.encoders
+@pytest.mark.parametrize('name', ENCODERS)
+def test_MobileNetEncoder_CASE_unused_layer_check(name):
+    IN_CHANNELS = 3
+    DEPTH = 5
+
+    encoder = Encoder(
+        in_channels=IN_CHANNELS,
+        depth=DEPTH,
+        name=name
+    )
+
+    encoder.train()
+
+    x = torch.randn(2, IN_CHANNELS, 32)
+    y = encoder(x)[-1]
+
+    loss = y.sum()
+    loss.backward()
+
+    for n, p in encoder.named_parameters():
+        assert p.grad is not None, f'{n} parameter has not a grad'

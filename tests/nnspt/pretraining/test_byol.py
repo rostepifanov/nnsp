@@ -35,8 +35,10 @@ def test_Autoencoder_CASE_creation(name):
 
     model.eval()
 
-    x = torch.randn(1, NCHANNELS, 64)
-    y1, y2 = model(x, x)
+    x = torch.randn(1, NCHANNELS, 32)
+
+    with torch.no_grad():
+        y1, y2 = model(x, x)
 
     assert y1.shape[0] == x.shape[0]
     assert y1.shape[1] == (model.encoder.out_channels[-1] + REDUCTION - 1) // REDUCTION

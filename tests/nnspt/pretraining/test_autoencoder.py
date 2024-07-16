@@ -33,8 +33,10 @@ def test_Autoencoder_CASE_creation(name):
 
     model.eval()
 
-    x = torch.randn(1, NCHANNELS, 64)
-    y = model(x)
+    x = torch.randn(1, NCHANNELS, 32)
+
+    with torch.no_grad():
+        y = model(x)
 
     assert y.shape[0] == x.shape[0]
     assert y.shape[1] == x.shape[1]

@@ -49,6 +49,8 @@ class MobileNetV2Encoder(EfficientNetEncoder):
         kwargs = get_mobilenet_v2_kwargs(channel_multiplier, depth_multiplier, fix_stem_head)
         super().__init__(stage_idxs, out_channels, depth, **kwargs)
 
+        del self.conv_head, self.bn2
+
         ConverterTimm.convert(self)
         Converter1d.convert(self)
 

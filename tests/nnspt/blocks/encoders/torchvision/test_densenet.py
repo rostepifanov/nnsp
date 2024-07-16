@@ -24,8 +24,10 @@ def test_ResNetEncoder_CASE_creation(name):
 
     encoder.eval()
 
-    x = torch.randn(1, IN_CHANNELS, 64)
-    y = encoder(x)
+    x = torch.randn(1, IN_CHANNELS, 32)
+
+    with torch.no_grad():
+        y = encoder(x)
 
     for nchannels, yi in zip(encoder.out_channels, y):
         assert yi.shape[0] == x.shape[0]

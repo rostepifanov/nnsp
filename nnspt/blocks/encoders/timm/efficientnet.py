@@ -266,6 +266,8 @@ class EfficientNetV1Encoder(EfficientNetEncoder):
         kwargs = get_efficientnet_v1_kwargs(channel_multiplier, depth_multiplier, drop_rate)
         super().__init__(stage_idxs, out_channels, depth, **kwargs)
 
+        del self.conv_head, self.bn2
+
         ConverterTimm.convert(self)
         Converter1d.convert(self)
 
@@ -284,6 +286,8 @@ class EfficientNetLiteEncoder(EfficientNetEncoder):
         kwargs = gen_efficientnet_lite_kwargs(channel_multiplier, depth_multiplier, drop_rate)
         super().__init__(stage_idxs, out_channels, depth, **kwargs)
 
+        del self.conv_head, self.bn2
+
         ConverterTimm.convert(self)
         Converter1d.convert(self)
 
@@ -300,6 +304,8 @@ class EfficientNetV2BaseEncoder(EfficientNetEncoder):
     ):
         kwargs = gen_efficientnetv2_base_kwargs(channel_multiplier, depth_multiplier)
         super().__init__(stage_idxs, out_channels, depth, **kwargs)
+
+        del self.conv_head, self.bn2
 
         ConverterTimm.convert(self)
         Converter1d.convert(self)
@@ -318,6 +324,8 @@ class EfficientNetV2SmallEncoder(EfficientNetEncoder):
         kwargs = gen_efficientnetv2_small_kwargs(channel_multiplier, depth_multiplier)
         super().__init__(stage_idxs, out_channels, depth, **kwargs)
 
+        del self.conv_head, self.bn2
+
         ConverterTimm.convert(self)
         Converter1d.convert(self)
 
@@ -334,6 +342,8 @@ class EfficientNetV2MediumEncoder(EfficientNetEncoder):
     ):
         kwargs = gen_efficientnetv2_medium_kwargs(channel_multiplier, depth_multiplier)
         super().__init__(stage_idxs, out_channels, depth, **kwargs)
+
+        del self.conv_head, self.bn2
 
         ConverterTimm.convert(self)
         Converter1d.convert(self)
@@ -352,6 +362,8 @@ class EfficientNetV2LargeEncoder(EfficientNetEncoder):
         kwargs = gen_efficientnetv2_large_kwargs(channel_multiplier, depth_multiplier)
         super().__init__(stage_idxs, out_channels, depth, **kwargs)
 
+        del self.conv_head, self.bn2
+
         ConverterTimm.convert(self)
         Converter1d.convert(self)
 
@@ -368,6 +380,8 @@ class EfficientNetV2ExtraLargeEncoder(EfficientNetEncoder):
     ):
         kwargs = gen_efficientnetv2_extralarge_kwargs(channel_multiplier, depth_multiplier)
         super().__init__(stage_idxs, out_channels, depth, **kwargs)
+
+        del self.conv_head, self.bn2
 
         ConverterTimm.convert(self)
         Converter1d.convert(self)
