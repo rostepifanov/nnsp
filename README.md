@@ -41,7 +41,7 @@ model = Unet(encoder='tv-resnet34')
 
  - [Kaggle notebook](https://www.kaggle.com/code/rostepifanov/nnspt-1d-effitientnet-v2-b1-starter-lb-0-63) HMS EEG competition (EEG classification)
  - [Kaggle notebook](https://www.kaggle.com/code/rostepifanov/nnspt-eeg-1d-cnn) GAL EEG competition (EEG segmentation)
- - [Kaggle notebook](https://www.kaggle.com/code/rostepifanov/nnspt-emg-1d-cnn) Handwritten digit classification by EMG record (EMG classification)
+ - [Kaggle notebook](https://www.kaggle.com/code/rostepifanov/nnstp-emg-1d-cnn) Handwritten digit classification by EMG record (EMG classification)
 
 ## Available components
 #### Encoders
@@ -161,6 +161,7 @@ model = Unet(encoder='tv-resnet34')
 #### Pretraining
 
   * Autoencoder
+  * BYOL [[paper](https://arxiv.org/abs/2006.07733)]
 
 #### Segmentation
 
