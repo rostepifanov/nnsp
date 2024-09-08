@@ -173,7 +173,7 @@ model = Unet(encoder='tv-resnet34')
 If you find this library useful for your research, please consider citing:
 
 ```
-@misc{epifanov2023ecgmentations,
+@misc{epifanov2023nnspt,
   Author = {Rostislav Epifanov},
   Title = {NNSTP},
   Year = {2023},
